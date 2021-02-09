@@ -141,6 +141,16 @@ $slider-amimation-time: 300ms;
     transform: translateX(-10px);
   }
 
+  @at-root .swiper-slide-active &,
+    .swiper-slide-next & {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+
+  @at-root .swiper-slide-active & {
+    transition-delay: 200ms;
+  }
+
   @at-root .swiper-slide-next & {
     transition-delay: $slider-amimation-time;
   }
