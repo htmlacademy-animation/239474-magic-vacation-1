@@ -156,14 +156,20 @@ $slider-amimation-time: 300ms;
 
 .chat__footer {
   .form {
+    justify-content: flex-end;
+  }
+
+  .form__field {
+    padding: 0;
     transition: {
-      property: transform;
-      duration: 500ms;
+      property: width, padding;
+      duration: 300ms;
     }
-    transform: translateX(-100%);
+    width: 0;
 
     @at-root .screen.active & {
-      transform: translateX(0);
+      padding: 0 5.6rem;
+      width: calc(100% - 9rem);
     }
   }
 }
