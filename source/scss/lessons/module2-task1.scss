@@ -1,0 +1,175 @@
+// #1 task (animation for menu links)
+//--------------------------------------
+
+$animation-menu-links-time: 300ms;
+
+.js-menu-link {
+  transition: {
+    property: color;
+    duration: $animation-menu-links-time;
+  }
+
+  @at-root .page-header__menu & {
+    &:after {
+      display: block;
+      left: inherit;
+      right: 0;
+      transition: {
+        property: width, color;
+        duration: $animation-menu-links-time;
+        timing-function: linear;
+      }
+      width: 0;
+    }
+
+    &:hover {
+      &::after {
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// #2 task (animation for the social links)
+//--------------------------------------
+
+$social-animation-time: 300ms;
+$social-links-lenght: 3;
+
+.social-block {
+  $this: &;
+
+  #{$this}__toggler {
+    &:before {
+      transition-duration: $social-animation-time;
+    }
+  }
+
+  #{$this}__list {
+    transition-duration: $social-animation-time;
+
+    li {
+      transition: {
+        property: transform;
+        duration: $social-animation-time;
+        timing-function: linear;
+      }
+      transform: scale(0);
+    }
+  }
+
+  &:hover {
+    #{$this}__list {
+      li {
+        transform: scale(1);
+
+        @for $i from 2 through $social-links-lenght {
+          $step: calc(
+            #{$social-animation-time} / (#{$social-links-lenght} - 1)
+          );
+
+          &:nth-child(#{$i}) {
+            transition-delay: calc((#{$step} * #{$i}) - #{$step});
+          }
+        }
+      }
+    }
+  }
+
+  &:focus,
+  &:focus-within {
+    #{$this}__list {
+      li {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// #3-4-5 tasks (common)
+//--------------------------------------
+
+.screen {
+  &--hidden {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// #3 task (animation for the main text)
+//--------------------------------------
+
+$text-amimation-time: 400ms;
+
+.intro__message {
+  opacity: 0;
+  transition: {
+    property: opacity, transform;
+    duration: $text-amimation-time;
+    timing-function: ease-in;
+  }
+
+  @at-root .screen.active & {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+// #4 task (animation for the slider text)
+//--------------------------------------
+
+$slider-amimation-time: 300ms;
+
+.slider__item-text {
+  opacity: 0;
+  transition: {
+    property: opacity, transform;
+    duration: $slider-amimation-time;
+    timing-function: ease-in;
+  }
+
+  @at-root .swiper-slide-active &,
+    .swiper-slide-next & {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+
+  @at-root .swiper-slide-active & {
+    transition-delay: 200ms;
+  }
+
+  @at-root .swiper-slide-next & {
+    transition-delay: $slider-amimation-time;
+  }
+}
+
+// #5 task (animation for the form input)
+//--------------------------------------
+
+.chat__footer {
+  .form {
+    justify-content: flex-end;
+  }
+
+  .form__field {
+    padding: 0;
+    transition: {
+      property: width, padding;
+      duration: 300ms;
+    }
+    width: 0;
+
+    @at-root .screen.active & {
+      padding: 0 5.6rem;
+      width: calc(100% - 9rem);
+    }
+  }
+}
