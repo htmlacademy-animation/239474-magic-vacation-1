@@ -1,0 +1,17 @@
+@mixin at-root($selector) {
+  @at-root #{$selector} #{&} {
+    @content;
+  }
+}
+
+@mixin root-animation() {
+  @include at-root(".animation") {
+    @content;
+  }
+}
+
+@mixin root-active-screen() {
+  @include at-root(".screen.active") {
+    @content;
+  }
+}

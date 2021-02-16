@@ -1,0 +1,104 @@
+$header-animation-time: 500ms;
+
+.page-header__wrapper {
+  opacity: 0;
+  transition: {
+    property: opacity;
+    duration: $header-animation-time;
+    timing-function: cubic-bezier(0.5, 0.8, 0.5, 0.8);
+  }
+
+  @include root-animation {
+    opacity: 1;
+  }
+}
+
+.page-header__logo {
+  transform: translateX(-10px);
+  transition: {
+    property: transform;
+    duration: $header-animation-time;
+    timing-function: cubic-bezier(0.5, 0.8, 0.5, 0.8);
+  }
+
+  @include root-animation {
+    transform: translateX(0);
+  }
+}
+
+.js-menu-link {
+  &.active {
+    &:after {
+      @include root-animation {
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.social-block__toggler:before {
+  opacity: 0;
+  transition: {
+    property: opacity;
+    delay: 200ms;
+  }
+
+  @include root-animation {
+    animation: pulse ($header-animation-time + 100ms)
+      cubic-bezier(0.55, 1.08, 0.56, 1) 200ms;
+    opacity: 1;
+  }
+}
+
+//-------------------- Footer animation
+
+$footer-animation-time: 800ms;
+
+.intro__label {
+  opacity: 0;
+  transition: {
+    property: opacity;
+    duration: $footer-animation-time;
+    timing-function: cubic-bezier(0.55, 1.08, 0.56, 1);
+    delay: $footer-animation-time + 50ms;
+  }
+
+  @include root-animation {
+    opacity: 1;
+  }
+}
+
+.intro__date {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: {
+    property: transform, opacity;
+    duration: $footer-animation-time;
+    delay: $header-animation-time + 100ms;
+  }
+
+  @include root-animation {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+//-------------------- Keyframe for the social button
+
+@keyframes pulse {
+  0% {
+    height: 0;
+    width: 0;
+  }
+
+  80% {
+    height: 120%;
+    width: 120%;
+  }
+
+  100% {
+    height: 100%;
+    width: 100%;
+  }
+}

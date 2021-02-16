@@ -28,12 +28,6 @@ $animation-menu-links-time: 300ms;
         width: 100%;
       }
     }
-
-    &.active {
-      &::after {
-        width: 100%;
-      }
-    }
   }
 }
 
@@ -117,7 +111,7 @@ $text-amimation-time: 400ms;
     timing-function: ease-in;
   }
 
-  @at-root .screen.active & {
+  @include root-active-screen {
     opacity: 1;
     transform: translateY(-10px);
   }
@@ -142,11 +136,11 @@ $slider-amimation-time: 300ms;
     transform: translateX(-10px);
   }
 
-  @at-root .swiper-slide-active & {
+  @include at-root(".swiper-slide-active") {
     transition-delay: 200ms;
   }
 
-  @at-root .swiper-slide-next & {
+  @include at-root(".swiper-slide-next") {
     transition-delay: $slider-amimation-time;
   }
 }
@@ -167,7 +161,7 @@ $slider-amimation-time: 300ms;
     }
     width: 0;
 
-    @at-root .screen.active & {
+    @include root-active-screen {
       padding: 0 5.6rem;
       width: calc(100% - 9rem);
     }
