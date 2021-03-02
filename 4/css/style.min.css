@@ -3429,7 +3429,7 @@ img {
     height: 100%;
     width: 100%; } }
 
-.screen-bg {
+.animation-bg {
   background-color: #5f458c;
   height: 100vh;
   left: 0;
@@ -3440,7 +3440,7 @@ img {
   top: 0;
   width: 100%;
   z-index: 5; }
-  .screen-bg.open {
+  .animation-bg.open {
     animation: move 800ms linear;
     opacity: 1; }
 
