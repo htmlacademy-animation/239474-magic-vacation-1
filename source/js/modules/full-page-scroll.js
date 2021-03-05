@@ -62,8 +62,6 @@ export default class FullPageScroll {
     const activeItem = this.screenElements[this.activeScreen];
     const className = 'open';
 
-    console.log(activeItem);
-
     if (activeItem.id === "prizes") {
       this.screenBg.classList.add(className);
       setTimeout(() => {
