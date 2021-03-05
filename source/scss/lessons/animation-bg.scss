@@ -5,7 +5,7 @@
   opacity: 0;
   position: fixed;
   transition: {
-    duration: 800ms;
+    duration: 600ms;
     property: opacity, transform;
   }
   top: 0;
@@ -13,7 +13,7 @@
   z-index: 5;
 
   &.open {
-    animation: move 800ms linear;
+    animation: move 600ms linear;
     opacity: 1;
   }
 }
