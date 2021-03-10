@@ -10340,7 +10340,7 @@ class FullPageScroll {
     const className = 'open';
 
     if (activeItem.id === "prizes") {
-      this.bg.classList.add(className);
+      this.screenBg.classList.add(className);
       setTimeout(() => {
         this.screenBg.classList.remove(className);
       }, 1000);

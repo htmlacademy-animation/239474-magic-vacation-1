@@ -3435,13 +3435,13 @@ img {
   left: 0;
   opacity: 0;
   position: fixed;
-  transition-duration: 800ms;
+  transition-duration: 600ms;
   transition-property: opacity, transform;
   top: 0;
   width: 100%;
   z-index: 5; }
   .animation-bg.open {
-    animation: move 800ms linear;
+    animation: move 600ms linear;
     opacity: 1; }
 
 @keyframes move {
