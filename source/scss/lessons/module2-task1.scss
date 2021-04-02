@@ -1,0 +1,100 @@
+// #Module 2 task 1
+//--------------------------------------
+
+$itemsLenght: 4;
+$time-bullet: 500ms;
+$time-text: 600ms;
+
+.rules__item {
+  &::before {
+    animation: {
+      name: bullet;
+      duration: $time-bullet;
+      timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9);
+      fill-mode: forwards;
+    }
+    transform: scale(0);
+  }
+
+  p {
+    animation: {
+      name: listText;
+      duration: $time-text;
+      timing-function: ease-out;
+      fill-mode: forwards;
+    }
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  @for $i from 2 through $itemsLenght {
+    $stepBullet: $time-bullet / $itemsLenght;
+    $stepText: $time-text / $itemsLenght;
+
+    &:nth-child(#{$i}) {
+      &:before {
+        animation-delay: $stepBullet * $i - $stepBullet;
+      }
+
+      p {
+        animation-delay: $stepText * $i - $stepText;
+      }
+    }
+  }
+}
+
+// Animation for the Button
+
+$time-btn: 500ms;
+
+.rules__link {
+  animation: {
+    name: btn;
+    duration: $time-btn;
+    timing-function: ease-out;
+    fill-mode: forwards;
+  }
+  transform: scaleX(0);
+  width: 0;
+
+  > span {
+    animation: {
+      name: btnText;
+      duration: 300ms;
+      timing-function: linear;
+      delay: $time-btn;
+      fill-mode: forwards;
+    }
+    opacity: 0;
+  }
+}
+
+@keyframes bullet {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes listText {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes btn {
+  50% {
+    transform: scaleX(0.8);
+  }
+
+  100% {
+    transform: scaleX(1);
+    width: 150px;
+  }
+}
+
+@keyframes btnText {
+  to {
+    opacity: 1;
+  }
+}
