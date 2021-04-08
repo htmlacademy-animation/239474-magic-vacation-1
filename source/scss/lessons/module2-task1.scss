@@ -4,31 +4,29 @@
 $itemsLenght: 4;
 $time-bullet: 500ms;
 $time-text: 600ms;
+$time-btn: 500ms;
 
 .rules__item {
   &::before {
     @include root-active-screen {
       animation: {
-        name: bullet;
+        name: pulse;
         duration: $time-bullet;
         timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9);
-        fill-mode: forwards;
       }
     }
-    transform: scale(0);
   }
 
   p {
     @include root-active-screen {
       animation: {
-        name: listText;
+        name: moveText;
         duration: $time-text;
         timing-function: ease-out;
         fill-mode: forwards;
       }
     }
     opacity: 0;
-    transform: translateX(30px);
   }
 
   @for $i from 2 through $itemsLenght {
@@ -49,24 +47,19 @@ $time-text: 600ms;
 
 // Animation for the Button
 
-$time-btn: 500ms;
-
 .rules__link {
   @include root-active-screen {
     animation: {
-      name: btn;
+      name: moveBtn;
       duration: $time-btn;
       timing-function: ease-out;
-      fill-mode: forwards;
     }
   }
-  transform: scaleX(0);
-  width: 0;
 
   > span {
     @include root-active-screen {
       animation: {
-        name: btnText;
+        name: showBtnText;
         duration: 300ms;
         timing-function: linear;
         delay: $time-btn;
@@ -77,20 +70,34 @@ $time-btn: 500ms;
   }
 }
 
-@keyframes bullet {
+@keyframes pulse {
+  from {
+    transform: scale(0);
+  }
+
   to {
     transform: scale(1);
   }
 }
 
-@keyframes listText {
+@keyframes moveText {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@keyframes btn {
+@keyframes moveBtn {
+  0% {
+    transform: scaleX(0);
+    width: 0;
+  }
+
   50% {
     transform: scaleX(0.8);
   }
@@ -101,7 +108,11 @@ $time-btn: 500ms;
   }
 }
 
-@keyframes btnText {
+@keyframes showBtnText {
+  from {
+    opacity: 0;
+  }
+
   to {
     opacity: 1;
   }
