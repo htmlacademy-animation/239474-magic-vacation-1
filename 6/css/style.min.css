@@ -3451,19 +3451,15 @@ img {
     transform: translateY(0);
     z-index: 5; } }
 
-.rules__item::before {
-  transform: scale(0); }
-  .screen.active .rules__item::before {
-    animation-name: bullet;
-    animation-duration: 500ms;
-    animation-timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9);
-    animation-fill-mode: forwards; }
+.screen.active .rules__item::before {
+  animation-name: pulse;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9); }
 
 .rules__item p {
-  opacity: 0;
-  transform: translateX(30px); }
+  opacity: 0; }
   .screen.active .rules__item p {
-    animation-name: listText;
+    animation-name: moveText;
     animation-duration: 600ms;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards; }
@@ -3486,40 +3482,47 @@ img {
 .rules__item:nth-child(4) p {
   animation-delay: 450ms; }
 
-.rules__link {
-  transform: scaleX(0);
-  width: 0; }
-  .screen.active .rules__link {
-    animation-name: btn;
-    animation-duration: 500ms;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards; }
-  .rules__link > span {
-    opacity: 0; }
-    .screen.active .rules__link > span {
-      animation-name: btnText;
-      animation-duration: 300ms;
-      animation-timing-function: linear;
-      animation-delay: 500ms;
-      animation-fill-mode: forwards; }
+.screen.active .rules__link {
+  animation-name: moveBtn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-out; }
 
-@keyframes bullet {
+.rules__link > span {
+  opacity: 0; }
+  .screen.active .rules__link > span {
+    animation-name: showBtnText;
+    animation-duration: 300ms;
+    animation-timing-function: linear;
+    animation-delay: 500ms;
+    animation-fill-mode: forwards; }
+
+@keyframes pulse {
+  from {
+    transform: scale(0); }
   to {
     transform: scale(1); } }
 
-@keyframes listText {
+@keyframes moveText {
+  from {
+    opacity: 0;
+    transform: translateX(30px); }
   to {
     opacity: 1;
     transform: translateX(0); } }
 
-@keyframes btn {
+@keyframes moveBtn {
+  0% {
+    transform: scaleX(0);
+    width: 0; }
   50% {
     transform: scaleX(0.8); }
   100% {
     transform: scaleX(1);
     width: 150px; } }
 
-@keyframes btnText {
+@keyframes showBtnText {
+  from {
+    opacity: 0; }
   to {
     opacity: 1; } }
 
