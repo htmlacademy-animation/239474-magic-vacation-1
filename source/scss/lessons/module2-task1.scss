@@ -1,0 +1,119 @@
+// #Module 2 task 1
+//--------------------------------------
+
+$itemsLenght: 4;
+$time-bullet: 500ms;
+$time-text: 600ms;
+$time-btn: 500ms;
+
+.rules__item {
+  &::before {
+    @include root-active-screen {
+      animation: {
+        name: pulse;
+        duration: $time-bullet;
+        timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9);
+      }
+    }
+  }
+
+  p {
+    @include root-active-screen {
+      animation: {
+        name: moveText;
+        duration: $time-text;
+        timing-function: ease-out;
+        fill-mode: forwards;
+      }
+    }
+    opacity: 0;
+  }
+
+  @for $i from 2 through $itemsLenght {
+    $stepBullet: $time-bullet / $itemsLenght;
+    $stepText: $time-text / $itemsLenght;
+
+    &:nth-child(#{$i}) {
+      &:before {
+        animation-delay: $stepBullet * $i - $stepBullet;
+      }
+
+      p {
+        animation-delay: $stepText * $i - $stepText;
+      }
+    }
+  }
+}
+
+// Animation for the Button
+
+.rules__link {
+  @include root-active-screen {
+    animation: {
+      name: moveBtn;
+      duration: $time-btn;
+      timing-function: ease-out;
+    }
+  }
+
+  > span {
+    @include root-active-screen {
+      animation: {
+        name: showBtnText;
+        duration: 300ms;
+        timing-function: linear;
+        delay: $time-btn;
+        fill-mode: forwards;
+      }
+    }
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes moveText {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveBtn {
+  0% {
+    transform: scaleX(0);
+    width: 0;
+  }
+
+  50% {
+    transform: scaleX(0.8);
+  }
+
+  100% {
+    transform: scaleX(1);
+    width: 150px;
+  }
+}
+
+@keyframes showBtnText {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
