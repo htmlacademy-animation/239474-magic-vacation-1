@@ -1,0 +1,49 @@
+// #Module 2 task 2
+//--------------------------------------
+
+$time-lines: 800ms;
+$lines-length: 6;
+$time-letters: 500ms;
+
+.word-animation {
+  span {
+    display: inline-block;
+    transform: scaleY(0);
+    transition-property: transform;
+    will-change: transform;
+  }
+
+  > span {
+    transition-duration: $time-lines;
+
+    > span {
+      transition-duration: $time-letters;
+
+      &:nth-child(even) {
+        transition-delay: 150ms;
+      }
+
+      &:nth-child(odd) {
+        transition-delay: 300ms;
+      }
+    }
+
+    @for $i from 2 through $lines-length {
+      $step: $time-lines / $lines-length;
+
+      &:nth-child(#{$i}) {
+        transition-delay: $step * $i - $step;
+      }
+    }
+  }
+
+  @include root-active-screen {
+    span {
+      transform: scaleY(1);
+    }
+  }
+}
+
+.text-space {
+  margin: 0 5px;
+}

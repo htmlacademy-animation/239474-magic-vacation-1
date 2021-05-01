@@ -9,6 +9,7 @@ import form from './modules/form.js';
 import social from './modules/social.js';
 import FullPageScroll from './modules/full-page-scroll';
 import onload from './modules/onload';
+import WordAnimation from "./modules/word-animation";
 
 // init modules
 mobileHeight();
@@ -23,3 +24,15 @@ onload();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+const wordAnimation = new WordAnimation(".intro__title", ".screen--intro");
+wordAnimation.init();
+
+const wordAnimation2 = new WordAnimation(".intro__label", ".screen--intro");
+wordAnimation2.init();
+
+const wordAnimation3 = new WordAnimation(".slider__item-title", ".screen--story");
+wordAnimation3.init();
+
+const wordAnimation4 = new WordAnimation(".prizes__title", ".screen--prizes");
+wordAnimation4.init();
