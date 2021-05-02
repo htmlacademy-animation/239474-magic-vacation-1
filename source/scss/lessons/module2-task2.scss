@@ -47,3 +47,138 @@ $time-letters: 500ms;
 .text-space {
   margin: 0 5px;
 }
+
+//-------------------------------------- Result images animation
+
+.result__image__block {
+  height: 240px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(100%);
+  transition-duration: 800ms;
+  transition-property: transform;
+  transition-timing-function: easy-in;
+  width: 240px;
+  z-index: 200;
+
+  .image-prize--flamingo {
+    opacity: 0;
+    transition-duration: 500ms;
+    transition-property: opacity;
+  }
+
+  .image-prize--suitcase {
+    transform: scale(0.1);
+    transition-duration: 500ms;
+    transition-property: transform;
+  }
+
+  @include root-result-screen() {
+    transform: translate(-50%, -50%);
+
+    .image-prize--flamingo {
+      opacity: 1;
+    }
+
+    .image-prize--suitcase {
+      transform: scale(1);
+    }
+  }
+}
+
+.image-prize {
+  position: absolute;
+
+  &--flamingo {
+    top: 60px;
+    height: 200px !important;
+    left: -30px;
+    width: 180px !important;
+    z-index: 100;
+  }
+
+  &--suitcase {
+    height: 240px !important;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 240px !important;
+  }
+
+  &--leaf-blue-r {
+    height: 200px !important;
+    left: calc(50% + 110px);
+    opacity: 0;
+    top: 50%;
+    width: 213px !important;
+
+    @include root-result-screen() {
+      animation: {
+        duration: 800ms;
+        name: leaf;
+        timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
+        delay: 800ms;
+        fill-mode: forwards;
+      }
+    }
+  }
+
+  &--leaf-blue-l {
+    height: 200px !important;
+    left: calc(50% - 100px);
+    opacity: 0;
+    top: calc(50% + 100px);
+    width: 213px !important;
+
+    @include root-result-screen() {
+      animation: {
+        duration: 1000ms;
+        name: leaf;
+        timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
+        delay: 800ms;
+        fill-mode: forwards;
+      }
+    }
+  }
+
+  &--leaf-green {
+    height: 100px !important;
+    left: calc(50% + 120px);
+    opacity: 0;
+    top: calc(50% + 70px);
+    width: 200px !important;
+
+    @include root-result-screen() {
+      animation: {
+        duration: 1000ms;
+        name: leaf;
+        timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
+        delay: 900ms;
+        fill-mode: forwards;
+      }
+    }
+  }
+}
+
+@keyframes leaf {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 10px));
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + 20px));
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% - 10px));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
