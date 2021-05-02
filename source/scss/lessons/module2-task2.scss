@@ -5,6 +5,10 @@ $time-lines: 800ms;
 $lines-length: 6;
 $time-letters: 500ms;
 
+$time-form: 500ms;
+$time-images: 800ms;
+$time-leaf-images-delay: 600ms;
+
 .word-animation {
   span {
     display: inline-block;
@@ -56,7 +60,7 @@ $time-letters: 500ms;
   position: absolute;
   top: 50%;
   transform: translateY(100%);
-  transition-duration: 800ms;
+  transition-duration: $time-images;
   transition-property: transform;
   transition-timing-function: easy-in;
   width: 240px;
@@ -115,10 +119,10 @@ $time-letters: 500ms;
 
     @include root-result-screen() {
       animation: {
-        duration: 800ms;
+        duration: $time-images;
         name: leaf;
         timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
-        delay: 800ms;
+        delay: $time-leaf-images-delay;
         fill-mode: forwards;
       }
     }
@@ -133,10 +137,10 @@ $time-letters: 500ms;
 
     @include root-result-screen() {
       animation: {
-        duration: 1000ms;
+        duration: $time-images;
         name: leaf;
         timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
-        delay: 800ms;
+        delay: $time-leaf-images-delay;
         fill-mode: forwards;
       }
     }
@@ -151,10 +155,10 @@ $time-letters: 500ms;
 
     @include root-result-screen() {
       animation: {
-        duration: 1000ms;
+        duration: $time-images;
         name: leaf;
         timing-function: cubic-bezier(0.59, -0.11, 0.64, 1.17);
-        delay: 900ms;
+        delay: $time-leaf-images-delay + 100ms;
         fill-mode: forwards;
       }
     }
@@ -180,5 +184,54 @@ $time-letters: 500ms;
   100% {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+}
+
+//-------------------------------------- Result form animation
+
+.result--prize .result__form {
+  .form--result {
+    justify-content: flex-end;
+  }
+
+  .form__button {
+    flex-grow: 0;
+    font-size: 2.4rem;
+    opacity: 0;
+    transition-duration: $time-form;
+    transition-property: opacity;
+    width: auto;
+
+    svg {
+      display: none;
+    }
+
+    &__text {
+      opacity: 0;
+      transition-duration: $time-form;
+      transition-property: opacity;
+      transition-delay: 200ms;
+    }
+
+    @include root-result-screen() {
+      opacity: 1;
+
+      &__text {
+        opacity: 1;
+      }
+    }
+  }
+
+  .form__field {
+    position: absolute;
+    right: 165px;
+    transition-duration: $time-form;
+    transition-property: width;
+    transition-delay: 200ms;
+    width: 0 !important;
+
+    @include root-result-screen() {
+      width: calc(100% - 31rem) !important;
+    }
   }
 }
