@@ -28,8 +28,10 @@ fullPageScroll.init();
 const wordAnimation = new WordAnimation(".intro__title", ".screen--intro");
 wordAnimation.init();
 
-const wordAnimation2 = new WordAnimation(".intro__label", ".screen--intro");
-wordAnimation2.init();
+const wordAnimation2 = new WordAnimation(".intro__date", ".screen--intro");
+setTimeout(() => {
+  wordAnimation2.init();
+}, 1000);
 
 const wordAnimation3 = new WordAnimation(".slider__item-title", ".screen--story");
 wordAnimation3.init();
