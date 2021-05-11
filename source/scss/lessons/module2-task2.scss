@@ -280,23 +280,23 @@ $span-indent: 20px;
       }
     }
 
-    &__text {
-      opacity: 0;
-      transition-duration: 1000ms;
-      transition-property: opacity;
-      transition-delay: 200ms;
+    @include root-result-screen() {
+      opacity: 1;
+    }
+  }
 
-      @media (max-width: 1023px) {
-        display: none;
-      }
+  .btn__text {
+    opacity: 0;
+    transition-duration: 1000ms;
+    transition-property: opacity;
+    transition-delay: 200ms;
+
+    @media (max-width: 1023px) {
+      display: none;
     }
 
     @include root-result-screen() {
       opacity: 1;
-
-      &__text {
-        opacity: 1;
-      }
     }
   }
 
