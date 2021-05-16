@@ -153,17 +153,28 @@ $slider-amimation-time: 300ms;
     justify-content: flex-end;
   }
 
+  .form__button {
+    flex-grow: 0;
+  }
+
   .form__field {
-    padding: 0;
+    opacity: 0;
     transition: {
-      property: width, padding;
-      duration: 300ms;
+      property: width, opacity;
+      duration: 500ms;
     }
-    width: 0;
+    width: 0 !important;
 
     @include root-active-screen {
-      padding: 0 5.6rem;
-      width: calc(100% - 9rem);
+      opacity: 1;
+
+      @media (min-width: 1024px) {
+        width: calc(100% - 21rem) !important;
+      }
+
+      @media (max-width: 1023px) {
+        width: calc(100% - 9rem) !important;
+      }
     }
   }
 }

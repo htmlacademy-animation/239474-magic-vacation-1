@@ -15,3 +15,9 @@
     @content;
   }
 }
+
+@mixin root-result-screen() {
+  @include at-root(".screen--show") {
+    @content;
+  }
+}
