@@ -1,9 +1,7 @@
 export default class WordAnimation {
-  constructor(node, container) {
+  constructor(node) {
     this._node = node;
-    this._containerNode = container;
     this._element = document.querySelector(this._node);
-    this._container = document.querySelector(this._containerNode);
     this.line = '';
     this.time = 1000;
   }

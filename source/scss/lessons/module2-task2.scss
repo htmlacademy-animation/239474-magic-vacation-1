@@ -34,29 +34,29 @@ $span-indent: 20px;
 
 //-------------------------------------- Result images animation
 
-.result__picture {
+.result__image picture.result__picture {
   align-items: center;
-  display: flex !important;
-  height: 300px !important;
+  display: flex;
+  height: 300px;
   justify-content: center;
   left: 50%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 600px !important;
+  width: 600px;
 }
 
-.image-prize {
+.result__image img.image-prize {
   position: relative;
 
   //---- Flamingo
 
   &--flamingo {
-    height: 200px !important;
+    height: 200px;
     left: 60px;
     top: 45px;
     transform-origin: 100% 50%;
-    width: 180px !important;
+    width: 180px;
     z-index: 100;
 
     @include root-result-screen() {
@@ -73,10 +73,10 @@ $span-indent: 20px;
   //---- Suitcase
 
   &--suitcase {
-    height: 240px !important;
+    height: 240px;
     right: 100px;
     top: 25px;
-    width: 240px !important;
+    width: 240px;
     z-index: 50;
 
     @include root-result-screen() {
@@ -92,12 +92,12 @@ $span-indent: 20px;
   //---- Leaf blue left
 
   &--leaf-blue-l {
-    height: 200px !important;
+    height: 200px;
     margin-right: -180px;
     margin-top: 140px;
     opacity: 0;
     transform-origin: 100% 50%;
-    width: 213px !important;
+    width: 213px;
 
     @include root-result-screen() {
       animation: {
@@ -113,11 +113,11 @@ $span-indent: 20px;
   //---- Leaf blue right
 
   &--leaf-blue-r {
-    height: 200px !important;
+    height: 200px;
     margin-left: -200px;
     opacity: 0;
     transform-origin: 0 50%;
-    width: 213px !important;
+    width: 213px;
 
     @include root-result-screen() {
       animation: {
@@ -133,10 +133,10 @@ $span-indent: 20px;
   //---- Leaf blue green
 
   &--leaf-green {
-    height: 100px !important;
+    height: 100px;
     margin-left: -200px;
     top: 45px;
-    width: 200px !important;
+    width: 200px;
     opacity: 0;
     transform-origin: 0 80px;
 
@@ -302,14 +302,21 @@ $span-indent: 20px;
 
   .form__field {
     opacity: 0;
-    transition-delay: 500ms;
+    transition-delay: 300ms;
     transition-duration: 1000ms;
     transition-property: width, opacity;
     width: 0 !important;
 
     @include root-result-screen() {
       opacity: 1;
-      width: calc(100% - 31rem) !important;
+
+      @media (min-width: 1024px) {
+        width: calc(100% - 31rem) !important;
+      }
+
+      @media (max-width: 1023px) {
+        width: calc(100% - 7rem) !important;
+      }
     }
   }
 }
