@@ -1,0 +1,35 @@
+// Negative result button animations
+//--------------------------------------------
+
+.result--negative {
+  .result__button {
+    opacity: 0;
+    transition: {
+      duration: 500ms;
+      property: opacity;
+    }
+
+    > span {
+      @include root-result-screen() {
+        animation: {
+          duration: 500ms;
+          name: resultbuttonMove;
+          fill-mode: forwards;
+        }
+      }
+    }
+
+    @include root-result-screen() {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes resultbuttonMove {
+  0% {
+    transform: translateX(40px) rotate(120deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}

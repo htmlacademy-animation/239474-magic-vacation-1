@@ -1,0 +1,55 @@
+// Slider pagination and controls animations
+//--------------------------------------------
+
+.slider__pagination {
+  opacity: 0;
+  transition: {
+    duration: 500ms;
+    property: opacity;
+  }
+
+  @include root-active-screen {
+    opacity: 1;
+  }
+}
+
+.slider__control {
+  opacity: 0;
+
+  @include root-active-screen {
+    animation: {
+      duration: 600ms;
+      fill-mode: forwards;
+    }
+
+    &--prev {
+      animation-name: controlPrevMove;
+    }
+
+    &--next {
+      animation-name: controlNextMove;
+    }
+  }
+}
+
+@keyframes controlPrevMove {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px) rotate(210deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(360deg);
+  }
+}
+
+@keyframes controlNextMove {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) rotate(130deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}

@@ -1,0 +1,5 @@
+@import "theme.scss";
+
+@include theme("slide0", $theme1);
+@include theme("slide2", $theme2);
+@include theme("slide4", $theme3);
