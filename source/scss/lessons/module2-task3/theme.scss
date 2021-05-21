@@ -1,0 +1,90 @@
+$theme1: (
+  toggler: (
+    color: #a67ee5,
+    hoverFocusColor: #5f458c,
+  ),
+  menuLink: (
+    color: #5f458c,
+  ),
+  slider: (
+    color: #a67ee5,
+    hoverColor: #5f458c,
+  ),
+);
+
+$theme2: (
+  toggler: (
+    color: #007aff,
+    hoverFocusColor: #9cbfe5,
+  ),
+  menuLink: (
+    color: #9cbfe5,
+  ),
+  slider: (
+    color: #9cbfe5,
+    hoverColor: #007aff,
+  ),
+);
+
+$theme3: (
+  toggler: (
+    color: #9cbfe5,
+    hoverFocusColor: #007aff,
+  ),
+  menuLink: (
+    color: #007aff,
+  ),
+  slider: (
+    color: #9cbfe5,
+    hoverColor: #007aff,
+  ),
+);
+
+@mixin theme($theme, $themeMap) {
+  .#{$theme} {
+    @each $element, $properties in $themeMap {
+      @if ($element == "toggler") {
+        .social-block__toggler {
+          color: map-get($properties, color);
+
+          &:hover,
+          &:focus {
+            color: map-get($properties, hoverFocusColor);
+          }
+
+          &:focus {
+            &:before {
+              border-color: map-get($properties, hoverFocusColor);
+            }
+          }
+
+          &:active {
+            background-color: map-get($properties, hoverFocusColor);
+            color: white;
+          }
+        }
+      } @else if ($element == "menuLink") {
+        .js-menu-link {
+          &:hover,
+          &:focus {
+            color: map-get($properties, color);
+          }
+
+          &:hover {
+            &:after {
+              background-color: map-get($properties, color);
+            }
+          }
+        }
+      } @else {
+        .slider__control {
+          color: map-get($properties, color);
+
+          &:hover {
+            color: map-get($properties, hoverColor);
+          }
+        }
+      }
+    }
+  }
+}
