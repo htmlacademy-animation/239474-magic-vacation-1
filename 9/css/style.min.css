@@ -4758,6 +4758,12 @@ img {
     transition-property: opacity;
     transition-delay: 300ms;
   }
+  .screen__footer .screen__footer-announce {
+    display: none;
+  }
+  .screen__footer .screen__footer-note {
+    padding-top: 60px;
+  }
   .screen__footer--full {
     background: transparent;
   }
