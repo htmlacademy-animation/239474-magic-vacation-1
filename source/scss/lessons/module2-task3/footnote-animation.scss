@@ -54,6 +54,16 @@
       }
     }
 
+    .screen__footer {
+      &-announce {
+        display: none;
+      }
+
+      &-note {
+        padding-top: 60px;
+      }
+    }
+
     &--full {
       background: transparent;
 
