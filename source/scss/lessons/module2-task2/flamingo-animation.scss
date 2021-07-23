@@ -1,38 +1,5 @@
-// #Module 2 task 2
-//--------------------------------------
-
-$span-indent: 20px;
-
-.word-animation {
-  span {
-    display: inline-block;
-    transition-property: transform;
-    will-change: transform;
-  }
-
-  > span {
-    margin-top: -$span-indent;
-    overflow: hidden;
-    padding-top: $span-indent;
-    white-space: nowrap;
-
-    > span {
-      transform: translateY(100%);
-    }
-  }
-
-  @include root-active-screen {
-    span {
-      transform: translateY(0);
-    }
-  }
-}
-
-.text-space {
-  margin: 0 5px;
-}
-
-//-------------------------------------- Result images animation
+// Flamingo image animation (result block)
+//--------------------------------------------
 
 .result__image picture.result__picture {
   align-items: center;
@@ -54,7 +21,7 @@ $span-indent: 20px;
   &--flamingo {
     height: 200px;
     left: 60px;
-    top: 45px;
+    top: 55px;
     transform-origin: 100% 50%;
     width: 180px;
     z-index: 100;
@@ -66,6 +33,7 @@ $span-indent: 20px;
         timing-function: ease-out, linear;
         delay: 0ms, 500ms;
         fill-mode: forwards;
+        iteration-count: inherit, infinite;
       }
     }
   }
@@ -73,17 +41,17 @@ $span-indent: 20px;
   //---- Suitcase
 
   &--suitcase {
-    height: 240px;
+    height: 280px;
     right: 100px;
-    top: 25px;
-    width: 240px;
+    top: 35px;
+    width: 280px;
     z-index: 50;
 
     @include root-result-screen() {
       animation: {
-        duration: 500ms;
+        duration: 600ms;
         name: suitcaseMove;
-        timing-function: ease-out;
+        timing-function: cubic-bezier(.94,.85,.83,1.07);
         fill-mode: forwards;
       }
     }
@@ -92,16 +60,17 @@ $span-indent: 20px;
   //---- Leaf blue left
 
   &--leaf-blue-l {
-    height: 200px;
-    margin-right: -180px;
+    height: 260px;
+    margin-right: -210px;
     margin-top: 140px;
     opacity: 0;
     transform-origin: 100% 50%;
-    width: 213px;
+    transform: rotate(360deg);
+    width: 305px;
 
     @include root-result-screen() {
       animation: {
-        duration: 2000ms;
+        duration: 3000ms;
         name: leafMoveLeft;
         timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
         delay: 500ms;
@@ -111,17 +80,18 @@ $span-indent: 20px;
   }
 
   //---- Leaf blue right
-
+ 
   &--leaf-blue-r {
-    height: 200px;
-    margin-left: -200px;
+    height: 280px;
+    margin-left: -210px;
     opacity: 0;
     transform-origin: 0 50%;
-    width: 213px;
+    transform: rotate(-20deg);
+    width: 305px;
 
     @include root-result-screen() {
       animation: {
-        duration: 2000ms;
+        duration: 3000ms;
         name: leafMoveRight;
         timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
         delay: 500ms;
@@ -133,16 +103,17 @@ $span-indent: 20px;
   //---- Leaf blue green
 
   &--leaf-green {
-    height: 100px;
-    margin-left: -200px;
-    top: 45px;
-    width: 200px;
+    height: 120px;
+    margin-left: -260px;
+    top: 65px;
+    width: 220px;
     opacity: 0;
     transform-origin: 0 80px;
+    transform: rotate(-8deg);
 
     @include root-result-screen() {
       animation: {
-        duration: 2000ms;
+        duration: 3000ms;
         name: leafMoveGreen;
         timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
         delay: 1000ms;
@@ -182,10 +153,13 @@ $span-indent: 20px;
 }
 
 @keyframes suitcaseMove {
-  from {
+  0% {
     transform: translateY(100%) scale(0);
   }
-  to {
+  70% {
+    transform: translateY(-10%) scale(1);  
+  } 
+  100% {
     transform: translateY(0) scale(1) rotate(-10deg);
   }
 }
@@ -193,130 +167,89 @@ $span-indent: 20px;
 @keyframes leafMoveRight {
   0% {
     opacity: 0;
-    transform: rotate(-20deg);
   }
-  25% {
-    transform: rotate(20deg);
+  14% {
+    transform: rotate(8deg);
   }
-  50% {
-    opacity: 1;
-    transform: rotate(-10deg);
+  28% {
+    transform: rotate(-5deg);
   }
-  75% {
-    opacity: 1;
+  42% {
+    opacity: 1; 
     transform: rotate(5deg);
+  }
+  56% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(3deg); 
+  }
+  85% {
+    opacity: 1;
+    transform: rotate(-1deg);
   }
   100% {
     opacity: 1;
-    transform: rotate(0);
+    transform: rotate(0); 
   }
 }
 
 @keyframes leafMoveLeft {
   0% {
     opacity: 0;
-    transform: rotate(360deg);
   }
-  25% {
-    transform: rotate(340deg);
+  14% {
+    transform: rotate(342deg);
   }
-  50% {
+  28% {
+    transform: rotate(348deg);
+  }
+  42% {
+    opacity: 1; 
+    transform: rotate(343deg);
+  }
+  56% {
+    transform: rotate(346deg);
+  }
+  70% {
     opacity: 1;
-    transform: rotate(350deg);
+    transform: rotate(344deg); 
   }
-  75% {
+  85% {
     opacity: 1;
-    transform: rotate(340deg);
+    transform: rotate(346deg);
   }
   100% {
     opacity: 1;
-    transform: rotate(345deg);
+    transform: rotate(345deg);  
   }
 }
 
 @keyframes leafMoveGreen {
   0% {
     opacity: 0;
-    transform: rotate(-10deg);
   }
-  25% {
-    transform: rotate(10deg);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(-5deg);
-  }
-  75% {
-    opacity: 1;
+  16% {
     transform: rotate(5deg);
+  }
+  32% {
+    transform: rotate(-3deg);
+  }
+  48% {
+    opacity: 1;
+    transform: rotate(2deg);
+  }
+  65% {
+    opacity: 1;
+    transform: rotate(-1deg);
+  }
+  82% {
+    opacity: 1;
+    transform: rotate(2deg);
   }
   100% {
     opacity: 1;
-    transform: rotate(0);
-  }
-}
-
-//-------------------------------------- Result form animation
-
-.result--prize .result__form {
-  .form--result {
-    justify-content: flex-end;
-  }
-
-  .form__button {
-    flex-grow: 0;
-    opacity: 0;
-    transition-duration: 1000ms;
-    transition-property: opacity;
-
-    @media (min-width: 1024px) {
-      font-size: 2.4rem;
-      width: auto;
-    }
-
-    svg {
-      @media (min-width: 1024px) {
-        display: none;
-      }
-    }
-
-    @include root-result-screen() {
-      opacity: 1;
-    }
-  }
-
-  .btn__text {
-    opacity: 0;
-    transition-duration: 1000ms;
-    transition-property: opacity;
-    transition-delay: 200ms;
-
-    @media (max-width: 1023px) {
-      display: none;
-    }
-
-    @include root-result-screen() {
-      opacity: 1;
-    }
-  }
-
-  .form__field {
-    opacity: 0;
-    transition-delay: 300ms;
-    transition-duration: 1000ms;
-    transition-property: width, opacity;
-    width: 0 !important;
-
-    @include root-result-screen() {
-      opacity: 1;
-
-      @media (min-width: 1024px) {
-        width: calc(100% - 31rem) !important;
-      }
-
-      @media (max-width: 1023px) {
-        width: calc(100% - 7rem) !important;
-      }
-    }
+    transform: rotate(0); 
   }
 }

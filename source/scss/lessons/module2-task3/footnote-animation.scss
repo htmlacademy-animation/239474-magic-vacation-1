@@ -1,0 +1,91 @@
+// Show / hide a footnote
+//--------------------------------------------
+
+.screen__footer {
+  &-enlarge,
+  &-collapse {
+    z-index: 600;
+  }
+
+  &-wrapper {
+    position: relative;
+    z-index: 500;
+  }
+
+  // Animation for the desktop version
+
+  @media (min-width: 1024px) {
+    transform: translateY(100%);
+    transition: {
+      duration: 500ms;
+      property: transform;
+    }
+
+    @include root-active-screen() {
+      transform: translateY(0);
+    }
+  }
+
+  // Animation for the mobile version
+
+  @media (max-width: 1023px) {
+    &:before {
+      background-color: white;
+      border-top-right-radius: 30px;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      transform: translate(-100%, 100%);
+      transition: {
+        duration: 300ms;
+        property: transform;
+      }
+    }
+
+    &-wrapper {
+      opacity: 0;
+      transition: {
+        duration: 200ms;
+        property: opacity;
+        delay: 300ms;
+      }
+    }
+
+    .screen__footer {
+      &-announce {
+        display: none;
+      }
+
+      &-note {
+        padding-top: 60px;
+      }
+    }
+
+    &--full {
+      background: transparent;
+
+      &:before {
+        transform: translate(0, 0);
+      }
+
+      &-wrapper {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.screen__disclaimer ul {
+  opacity: 0;
+  transition: {
+    duration: 500ms;
+    property: opacity;
+  }
+
+  @include root-active-screen() {
+    opacity: 1;
+  }
+}
