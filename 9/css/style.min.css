@@ -4268,33 +4268,46 @@ img {
 }
 .animation-bg {
   background-color: #5f458c;
-  height: 100vh;
+  height: 0;
   left: 0;
-  opacity: 0;
   position: fixed;
-  transition-duration: 600ms;
-  transition-property: opacity, transform;
-  top: 0;
+  bottom: 0;
   width: 100%;
-  z-index: 0;
+  z-index: 200;
 }
 .animation-bg.open {
-  animation: move 600ms linear;
-  opacity: 1;
+  animation-duration: 700ms;
+  animation-name: animationHeight;
+  animation-fill-mode: forwards;
 }
 
-@keyframes move {
+.page-header {
+  z-index: 500;
+}
+
+.screen--prizes {
+  opacity: 0;
+  transition-duration: 700ms;
+  transition-property: opacity;
+  transition-delay: 700ms;
+}
+.screen--prizes.screen-prizes-animation {
+  background: transparent;
+  opacity: 1;
+  z-index: 300;
+}
+
+@keyframes animationHeight {
   0% {
-    transform: translateY(100%);
+    height: 0;
   }
   100% {
-    transform: translateY(0);
-    z-index: 5;
+    height: 100vh;
   }
 }
 .screen.active .rules__item::before {
   animation-name: pulse;
-  animation-duration: 500ms;
+  animation-duration: 600ms;
   animation-timing-function: cubic-bezier(0.43, 0.01, 0.56, 1.9);
 }
 
@@ -4303,28 +4316,28 @@ img {
 }
 .screen.active .rules__item p {
   animation-name: moveText;
-  animation-duration: 600ms;
+  animation-duration: 700ms;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 .rules__item:nth-child(2):before {
-  animation-delay: 125ms;
-}
-.rules__item:nth-child(2) p {
   animation-delay: 150ms;
 }
-.rules__item:nth-child(3):before {
-  animation-delay: 250ms;
+.rules__item:nth-child(2) p {
+  animation-delay: 175ms;
 }
-.rules__item:nth-child(3) p {
+.rules__item:nth-child(3):before {
   animation-delay: 300ms;
 }
+.rules__item:nth-child(3) p {
+  animation-delay: 350ms;
+}
 .rules__item:nth-child(4):before {
-  animation-delay: 375ms;
+  animation-delay: 450ms;
 }
 .rules__item:nth-child(4) p {
-  animation-delay: 450ms;
+  animation-delay: 525ms;
 }
 
 .screen.active .rules__link {
@@ -4423,7 +4436,7 @@ img {
 .result__image img.image-prize--flamingo {
   height: 200px;
   left: 60px;
-  top: 45px;
+  top: 55px;
   transform-origin: 100% 50%;
   width: 180px;
   z-index: 100;
@@ -4434,32 +4447,34 @@ img {
   animation-timing-function: ease-out, linear;
   animation-delay: 0ms, 500ms;
   animation-fill-mode: forwards;
+  animation-iteration-count: inherit, infinite;
 }
 
 .result__image img.image-prize--suitcase {
-  height: 240px;
+  height: 280px;
   right: 100px;
-  top: 25px;
-  width: 240px;
+  top: 35px;
+  width: 280px;
   z-index: 50;
 }
 .screen--show .result__image img.image-prize--suitcase {
-  animation-duration: 500ms;
+  animation-duration: 600ms;
   animation-name: suitcaseMove;
-  animation-timing-function: ease-out;
+  animation-timing-function: cubic-bezier(0.94, 0.85, 0.83, 1.07);
   animation-fill-mode: forwards;
 }
 
 .result__image img.image-prize--leaf-blue-l {
-  height: 200px;
-  margin-right: -180px;
+  height: 260px;
+  margin-right: -210px;
   margin-top: 140px;
   opacity: 0;
   transform-origin: 100% 50%;
-  width: 213px;
+  transform: rotate(360deg);
+  width: 305px;
 }
 .screen--show .result__image img.image-prize--leaf-blue-l {
-  animation-duration: 2000ms;
+  animation-duration: 3000ms;
   animation-name: leafMoveLeft;
   animation-timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
   animation-delay: 500ms;
@@ -4467,14 +4482,15 @@ img {
 }
 
 .result__image img.image-prize--leaf-blue-r {
-  height: 200px;
-  margin-left: -200px;
+  height: 280px;
+  margin-left: -210px;
   opacity: 0;
   transform-origin: 0 50%;
-  width: 213px;
+  transform: rotate(-20deg);
+  width: 305px;
 }
 .screen--show .result__image img.image-prize--leaf-blue-r {
-  animation-duration: 2000ms;
+  animation-duration: 3000ms;
   animation-name: leafMoveRight;
   animation-timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
   animation-delay: 500ms;
@@ -4482,15 +4498,16 @@ img {
 }
 
 .result__image img.image-prize--leaf-green {
-  height: 100px;
-  margin-left: -200px;
-  top: 45px;
-  width: 200px;
+  height: 120px;
+  margin-left: -260px;
+  top: 65px;
+  width: 220px;
   opacity: 0;
   transform-origin: 0 80px;
+  transform: rotate(-8deg);
 }
 .screen--show .result__image img.image-prize--leaf-green {
-  animation-duration: 2000ms;
+  animation-duration: 3000ms;
   animation-name: leafMoveGreen;
   animation-timing-function: cubic-bezier(0.25, 0.81, 0.57, 0.94);
   animation-delay: 1000ms;
@@ -4525,28 +4542,40 @@ img {
   }
 }
 @keyframes suitcaseMove {
-  from {
+  0% {
     transform: translateY(100%) scale(0);
   }
-  to {
+  70% {
+    transform: translateY(-10%) scale(1);
+  }
+  100% {
     transform: translateY(0) scale(1) rotate(-10deg);
   }
 }
 @keyframes leafMoveRight {
   0% {
     opacity: 0;
-    transform: rotate(-20deg);
   }
-  25% {
-    transform: rotate(20deg);
+  14% {
+    transform: rotate(8deg);
   }
-  50% {
-    opacity: 1;
-    transform: rotate(-10deg);
+  28% {
+    transform: rotate(-5deg);
   }
-  75% {
+  42% {
     opacity: 1;
     transform: rotate(5deg);
+  }
+  56% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(3deg);
+  }
+  85% {
+    opacity: 1;
+    transform: rotate(-1deg);
   }
   100% {
     opacity: 1;
@@ -4556,18 +4585,27 @@ img {
 @keyframes leafMoveLeft {
   0% {
     opacity: 0;
-    transform: rotate(360deg);
   }
-  25% {
-    transform: rotate(340deg);
+  14% {
+    transform: rotate(342deg);
   }
-  50% {
+  28% {
+    transform: rotate(348deg);
+  }
+  42% {
     opacity: 1;
-    transform: rotate(350deg);
+    transform: rotate(343deg);
   }
-  75% {
+  56% {
+    transform: rotate(346deg);
+  }
+  70% {
     opacity: 1;
-    transform: rotate(340deg);
+    transform: rotate(344deg);
+  }
+  85% {
+    opacity: 1;
+    transform: rotate(346deg);
   }
   100% {
     opacity: 1;
@@ -4577,18 +4615,24 @@ img {
 @keyframes leafMoveGreen {
   0% {
     opacity: 0;
-    transform: rotate(-10deg);
   }
-  25% {
-    transform: rotate(10deg);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(-5deg);
-  }
-  75% {
-    opacity: 1;
+  16% {
     transform: rotate(5deg);
+  }
+  32% {
+    transform: rotate(-3deg);
+  }
+  48% {
+    opacity: 1;
+    transform: rotate(2deg);
+  }
+  65% {
+    opacity: 1;
+    transform: rotate(-1deg);
+  }
+  82% {
+    opacity: 1;
+    transform: rotate(2deg);
   }
   100% {
     opacity: 1;

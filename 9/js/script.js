@@ -10431,6 +10431,7 @@ class FullPageScroll {
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
     this.screenBg = document.querySelector('.animation-bg');
+    this.screenPrizes = document.querySelector('.screen--prizes');
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
@@ -10438,7 +10439,7 @@ class FullPageScroll {
   }
 
   init() {
-    document.addEventListener(`wheel`, lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
+    document.addEventListener(`wheel`, lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.onScrollHandler, this.THROTTLE_TIMEOUT, { trailing: true }));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -10463,6 +10464,7 @@ class FullPageScroll {
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
     this.changeBgVisibility();
+    this.toggleBodyClass();
   }
 
   changeVisibilityDisplay() {
@@ -10485,14 +10487,24 @@ class FullPageScroll {
   changeBgVisibility() {
     const activeItem = this.screenElements[this.activeScreen];
     const className = 'open';
+    const screenClassName = 'screen-prizes-animation';
 
     if (activeItem.id === "prizes") {
       this.screenBg.classList.add(className);
-      setTimeout(() => {
-        this.screenBg.classList.remove(className);
-      }, 1000);
+      this.screenPrizes.classList.add(screenClassName);
     } else {
       this.screenBg.classList.remove(className);
+      this.screenPrizes.classList.remove(screenClassName);
+    }
+  }
+
+  toggleBodyClass() {
+    const activeItem = this.screenElements[this.activeScreen];
+
+    if (activeItem.id !== "story") {
+      document.body.classList.remove('slide6', 'slide0', 'slide2', 'slide4');
+    } else {
+      document.body.classList.add('slide0');
     }
   }
 
