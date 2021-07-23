@@ -1,0 +1,65 @@
+// Form animation (result prize block)
+//--------------------------------------------
+
+.result--prize .result__form {
+  .form--result {
+    justify-content: flex-end;
+  }
+
+  .form__button {
+    flex-grow: 0;
+    opacity: 0;
+    transition-duration: 1000ms;
+    transition-property: opacity;
+
+    @media (min-width: 1024px) {
+      font-size: 2.4rem;
+      width: auto;
+    }
+
+    svg {
+      @media (min-width: 1024px) {
+        display: none;
+      }
+    }
+
+    @include root-result-screen() {
+      opacity: 1;
+    }
+  }
+
+  .btn__text {
+    opacity: 0;
+    transition-duration: 1000ms;
+    transition-property: opacity;
+    transition-delay: 200ms;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+
+    @include root-result-screen() {
+      opacity: 1;
+    }
+  }
+
+  .form__field {
+    opacity: 0;
+    transition-delay: 300ms;
+    transition-duration: 1000ms;
+    transition-property: width, opacity;
+    width: 0 !important;
+
+    @include root-result-screen() {
+      opacity: 1;
+
+      @media (min-width: 1024px) {
+        width: calc(100% - 31rem) !important;
+      }
+
+      @media (max-width: 1023px) {
+        width: calc(100% - 7rem) !important;
+      }
+    }
+  }
+}

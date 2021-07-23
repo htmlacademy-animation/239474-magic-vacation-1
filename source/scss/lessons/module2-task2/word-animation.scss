@@ -1,0 +1,33 @@
+// Word animation
+//--------------------------------------------
+
+$span-indent: 20px;
+
+.word-animation {
+  span {
+    display: inline-block;
+    transition-property: transform;
+    will-change: transform;
+  }
+
+  > span {
+    margin-top: -$span-indent;
+    overflow: hidden;
+    padding-top: $span-indent;
+    white-space: nowrap;
+
+    > span {
+      transform: translateY(100%);
+    }
+  }
+
+  @include root-active-screen {
+    span {
+      transform: translateY(0);
+    }
+  }
+}
+
+.text-space {
+  margin: 0 5px;
+}
