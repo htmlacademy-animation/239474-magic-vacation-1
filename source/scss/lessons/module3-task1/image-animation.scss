@@ -1,0 +1,61 @@
+.prizes {
+  &__image {
+    height: 460px;
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__list {
+    display: none;
+  }
+
+  &__image-from {
+    animation: {
+      duration: 300ms;
+      name: opacityImageFrom;
+      timing-function: linear;
+      delay: 3000ms;
+      fill-mode: forwards;
+    }
+  }
+
+  &__image-to {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(0);
+
+    @include root-active-screen {
+      animation: {
+        duration: 3000ms;
+        name: opacityImageTo;
+        timing-function: linear;
+        delay: 3000ms;
+        fill-mode: forwards;
+      }
+    }
+  }
+}
+
+@keyframes opacityImageFrom {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacityImageTo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
