@@ -1,6 +1,6 @@
 .prizes {
   &__image {
-    height: 460px;
+    height: 400px;
     position: relative;
 
     img {
@@ -17,12 +17,15 @@
     left: 0;
     position: absolute;
     top: 0;
-    animation: {
-      duration: 300ms;
-      name: opacityImageFrom;
-      timing-function: linear;
-      delay: 3000ms;
-      fill-mode: forwards;
+
+    @include root-active-screen {
+      animation: {
+        duration: 300ms;
+        name: opacityImageFrom;
+        timing-function: linear;
+        delay: 3500ms;
+        fill-mode: forwards;
+      }
     }
   }
 
@@ -38,7 +41,7 @@
         duration: 3000ms;
         name: opacityImageTo;
         timing-function: linear;
-        delay: 3000ms;
+        delay: 3500ms;
         fill-mode: forwards;
       }
     }
