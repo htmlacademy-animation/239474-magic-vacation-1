@@ -4907,7 +4907,7 @@ img {
 }
 
 .prizes__image {
-  height: 460px;
+  height: 400px;
   position: relative;
 }
 .prizes__image img {
@@ -4921,12 +4921,15 @@ img {
   left: 0;
   position: absolute;
   top: 0;
+}
+.screen.active .prizes__image-from {
   animation-duration: 300ms;
   animation-name: opacityImageFrom;
   animation-timing-function: linear;
-  animation-delay: 3000ms;
+  animation-delay: 3500ms;
   animation-fill-mode: forwards;
 }
+
 .prizes__image-to {
   left: 0;
   opacity: 0;
@@ -4938,7 +4941,7 @@ img {
   animation-duration: 3000ms;
   animation-name: opacityImageTo;
   animation-timing-function: linear;
-  animation-delay: 3000ms;
+  animation-delay: 3500ms;
   animation-fill-mode: forwards;
 }
 
