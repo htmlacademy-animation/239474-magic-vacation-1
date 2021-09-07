@@ -4918,6 +4918,9 @@ img {
   display: none;
 }
 .prizes__image-from {
+  left: 0;
+  position: absolute;
+  top: 0;
   animation-duration: 300ms;
   animation-name: opacityImageFrom;
   animation-timing-function: linear;
