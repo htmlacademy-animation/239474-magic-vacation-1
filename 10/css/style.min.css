@@ -4917,49 +4917,5 @@ img {
 .prizes__list {
   display: none;
 }
-.prizes__image-from {
-  left: 0;
-  position: absolute;
-  top: 0;
-}
-.screen.active .prizes__image-from {
-  animation-duration: 300ms;
-  animation-name: opacityImageFrom;
-  animation-timing-function: linear;
-  animation-delay: 3500ms;
-  animation-fill-mode: forwards;
-}
-
-.prizes__image-to {
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  transform: translateX(0);
-}
-.screen.active .prizes__image-to {
-  animation-duration: 3000ms;
-  animation-name: opacityImageTo;
-  animation-timing-function: linear;
-  animation-delay: 3500ms;
-  animation-fill-mode: forwards;
-}
-
-@keyframes opacityImageFrom {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes opacityImageTo {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 /*# sourceMappingURL=style.min.css.map*/
