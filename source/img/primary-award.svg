@@ -1118,7 +1118,7 @@
           begin="parachuteEndAnimation.end"
           dur="1.5s"
           fill="freeze"
-          repeatCount="2"
+          repeatCount="indefinite"
           type="rotate"
           values="0 260 330; 10 260 330; -3 260 330; 0 260 330"
         />
