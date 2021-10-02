@@ -1115,7 +1115,7 @@
         />
         <animateTransform
           attributeName="transform"
-          begin="parachuteEndAnimation.end - 0.2s"
+          begin="parachuteEndAnimation.end"
           dur="1.5s"
           fill="freeze"
           repeatCount="2"
