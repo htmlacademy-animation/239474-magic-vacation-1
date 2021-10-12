@@ -844,18 +844,47 @@
         </g>
       </g>
 
-      <g id="parachute" opacity="0" transform="scale(0.2) translate(800, 200)">
+      <g id="secondaryMainCloud">
         <animate
           attributeName="opacity"
-          begin="secondaryPrizeShowAnimation.end - 0.1s"
+          begin="parachuteShowAnimation.end + 600ms"
+          dur="350ms"
+          fill="freeze"
+          from="1"
+          to="0"
+        />
+        <animateTransform
+          attributeName="transform"
+          begin="parachuteShowAnimation.end + 600ms"
+          dur="300ms"
+          fill="freeze"
+          to="0 -120"
+          type="translate"
+        />
+        <path
+          d="M235.77,119H216.32a35.49,35.49,0,0,0-68-13.69A26.34,26.34,0,0,0,135.43,102a26.72,26.72,0,0,0-24.8,17H95.48a10.49,10.49,0,0,0,0,21h140.3a10.49,10.49,0,0,0,0-21"
+          fill="#fff"
+        />
+      </g>
+
+      <g
+        id="parachute"
+        opacity="0"
+        transform-origin="bottom"
+        transform="translate(-200, -275)"
+      >
+        <animate
+          attributeName="opacity"
+          begin="secondaryPrizeShowAnimation.end"
           dur="300ms"
           fill="freeze"
           id="parachuteShowAnimation"
+          from="0"
           to="1"
         />
         <animateMotion
           path="M179,111c24.19-9.24,29.8-15.84,29.42-20.44C207.18,75.43,138.73,51.78,96,84c-2.93,2.21-31.66,24.52-29,54,3.54,39.18,59.83,61.15,75.7,67.35,53.65,20.94,94.43,8.79,101.78,27.18,2.89,7.25.78,19.69-21.48,42.47"
-          begin="parachuteShowAnimation.end + 0.2s"
+          begin="parachuteShowAnimation.end - 0.2s"
           dur="3s"
           fill="freeze"
           repeatCount="1"
@@ -863,9 +892,10 @@
         <animateTransform
           additive="sum"
           attributeName="transform"
-          begin="parachuteShowAnimation.end + 0.2s"
+          begin="parachuteShowAnimation.end - 0.2s"
           dur="3s"
           fill="freeze"
+          from="0.2"
           to="1"
           type="scale"
         />
@@ -1050,29 +1080,6 @@
             />
           </g>
         </g>
-      </g>
-
-      <g id="secondaryMainCloud">
-        <animate
-          attributeName="opacity"
-          begin="parachuteShowAnimation.end + 600ms"
-          dur="350ms"
-          fill="freeze"
-          from="1"
-          to="0"
-        />
-        <animateTransform
-          attributeName="transform"
-          begin="parachuteShowAnimation.end + 600ms"
-          dur="300ms"
-          fill="freeze"
-          to="0 -120"
-          type="translate"
-        />
-        <path
-          d="M235.77,119H216.32a35.49,35.49,0,0,0-68-13.69A26.34,26.34,0,0,0,135.43,102a26.72,26.72,0,0,0-24.8,17H95.48a10.49,10.49,0,0,0,0,21h140.3a10.49,10.49,0,0,0,0-21"
-          fill="#fff"
-        />
       </g>
 
       <g id="secondarySmallLeaflet">
