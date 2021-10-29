@@ -2,7 +2,7 @@
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   viewBox="0 0 350 330"
-  width="350"
+  width="800"
   height="330"
 >
   <g>
@@ -1127,13 +1127,13 @@
         to="1"
       />
 
-      <g id="suit-top">
+      <g id="suitcase-top">
         <path
           d="M225.88,258.06H82.68a11.62,11.62,0,0,0-11.57,11.61v19.75H237.44V269.66a11.62,11.62,0,0,0-11.56-11.61"
           fill="#a67ee5"
         />
 
-        <g id="suit-open-circle" opacity="0">
+        <g id="suitcase-open-circle" opacity="0">
           <animate
             attributeName="opacity"
             begin="additionalPrizeShowAnimation.end + 0.1s"
@@ -1157,64 +1157,85 @@
           />
         </g>
 
-        <path
-          d="M225.88,258.06H82.68a11.62,11.62,0,0,0-11.57,11.61v19.75H237.44V269.66A11.62,11.62,0,0,0,225.88,258.06Z"
-          fill="none"
-          stroke="#fff"
-          stroke-miterlimit="10"
-          stroke-width="2"
-        >
+        <g id="suitcase-close-curve">
           <animate
-            attributeName="d"
-            calcMode="linear"
-            dur="150ms"
-            repeatCount="1"
-            fill="freeze"
+            attributeName="opacity"
             begin="additionalPrizeShowAnimation.end + 0.1s"
-            values="M 71.11 289.42 L 237.44 289.42 C 237.44 282.833 237.44 276.247 237.44 269.66 C 237.435 266.593 236.216 263.65 234.051 261.477 C 231.886 259.305 228.947 258.076 225.88 258.06 L 225.88 258.06 L 82.68 258.06 C 79.61 258.073 76.667 259.303 74.499 261.478 C 72.332 263.652 71.113 266.6 71.11 269.67 L 71.11 289.42;
-
-              M 85.74 210.49 L 85.24 210.49 C 81.263 210.49 77.445 212.071 74.633 214.883 C 71.821 217.695 70.24 221.513 70.24 225.49 C 70.24 229.018 70.24 232.547 70.24 236.075 L 70.24 246.66 L 70.24 257.245 C 70.24 260.773 70.24 264.302 70.24 267.83 C 70.24 271.358 70.24 274.887 70.24 278.415 L 70.24 289"
+            dur="150ms"
+            fill="freeze"
+            from="1"
+            to="0"
           />
-        </path>
+          <path
+            d="M225.88,258.06H82.68a11.62,11.62,0,0,0-11.57,11.61v19.75H237.44V269.66A11.62,11.62,0,0,0,225.88,258.06Z"
+            fill="none"
+            stroke="#fff"
+            stroke-miterlimit="10"
+            stroke-width="2"
+          />
+        </g>
 
-        <path
-          d="M267.11,258.06H119.23a11.81,11.81,0,0,0-11.93,11.61v19.75H279V269.66a11.81,11.81,0,0,0-11.93-11.61"
-          fill="#a67ee5"
-        >
+        <g id="suitcase-cover">
           <animate
             attributeName="d"
+            begin="additionalPrizeShowAnimation.end + 0.1s"
             calcMode="linear"
             dur="150ms"
-            repeatCount="1"
             fill="freeze"
-            begin="additionalPrizeShowAnimation.end + 0.1s"
+            href="#cover"
+            repeatCount="1"
             values="M 279 289.42 C 279 282.833 279 276.247 279 269.66 C 278.945 266.552 277.664 263.587 275.439 261.416 C 273.214 259.245 270.219 258.038 267.11 258.06 L 267.11 258.06 L 119.23 258.06 C 118.191 258.049 117.164 258.176 116.174 258.43 C 115.184 258.684 114.231 259.065 113.339 259.565 C 112.447 260.064 111.617 260.681 110.872 261.406 C 108.637 263.58 107.353 266.553 107.3 269.67 C 107.3 276.253 107.3 282.837 107.3 289.42 L 279 289.42;
     
             M 240.25 210.48 C 243.404 210.496 246.428 211.754 248.661 213.98 C 250.895 216.207 252.164 219.226 252.19 222.38 C 252.19 233.483 252.19 244.587 252.19 255.69 L 252.19 289 L 68.19 289 C 64.744 289 61.435 287.629 58.998 285.192 C 56.561 282.755 55.19 279.446 55.19 276 C 55.19 258.127 55.19 240.253 55.19 222.38 C 55.216 219.216 56.493 216.187 58.74 213.959 C 60.987 211.731 64.026 210.48 67.19 210.48 L 240.3 210.48"
           />
-        </path>
+          <path
+            d="M267.11,258.06H119.23a11.81,11.81,0,0,0-11.93,11.61v19.75H279V269.66a11.81,11.81,0,0,0-11.93-11.61"
+            fill="#a67ee5"
+            id="cover"
+          />
+        </g>
 
-        <path
-          d="M267.11,258.06H119.23a11.81,11.81,0,0,0-11.93,11.61v19.75H279V269.66A11.81,11.81,0,0,0,267.11,258.06Z"
-          fill="none"
-          stroke="#fff"
-          stroke-miterlimit="10"
-          stroke-width="2"
-        >
+        <g id="suitcase-cover-line">
           <animate
             attributeName="d"
+            begin="additionalPrizeShowAnimation.end + 0.1s"
             calcMode="linear"
             dur="150ms"
-            repeatCount="1"
             fill="freeze"
-            begin="additionalPrizeShowAnimation.end + 0.1s"
+            href="#cover-line"
+            repeatCount="1"
             values="M 267.11 258.06 L 193.17 258.06 L 119.23 258.06 C 118.191 258.049 117.164 258.176 116.174 258.43 C 115.184 258.684 114.231 259.065 113.339 259.565 C 112.447 260.064 111.617 260.681 110.872 261.406 C 108.637 263.58 107.353 266.553 107.3 269.67 C 107.3 276.253 107.3 282.837 107.3 289.42 L 279 289.42 L 279 269.66 C 278.947 266.543 277.663 263.57 275.428 261.396 C 273.194 259.221 270.187 258.018 267.07 258.05; 
 
             M 240.3 210.48 L 240.3 210.48 L 67.19 210.48 C 64.026 210.48 60.987 211.731 58.74 213.959 C 56.493 216.187 55.216 219.216 55.19 222.38 C 55.19 240.253 55.19 258.127 55.19 276 C 55.19 279.446 56.561 282.755 58.998 285.192 C 61.435 287.629 64.744 289 68.19 289 L 252.19 289 L 252.19 222.38 C 252.164 219.235 250.902 216.223 248.679 213.998 C 246.456 211.773 243.445 210.509 240.3 210.48"
           />
-        </path>
+          <path
+            d="M267.11,258.06H119.23a11.81,11.81,0,0,0-11.93,11.61v19.75H279V269.66A11.81,11.81,0,0,0,267.11,258.06Z"
+            fill="none"
+            id="cover-line"
+            stroke-miterlimit="10"
+            stroke-width="2"
+            stroke="#fff"
+          />
+        </g>
 
-        <g id="suit-close-circle">
+        <g id="suitcase-open-curve" opacity="0">
+          <animate
+            attributeName="opacity"
+            begin="additionalPrizeShowAnimation.end + 0.2s"
+            dur="100ms"
+            fill="freeze"
+            from="0"
+            to="1"
+          />
+          <path
+            d="M70.24,289V225.49a15,15,0,0,1,15-15h0.5"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+          />
+        </g>
+
+        <g id="suitcase-close-circle">
           <animate
             attributeName="opacity"
             begin="additionalPrizeShowAnimation.end + 0.1s"
@@ -1255,7 +1276,8 @@
         <g
           id="baloon-figure"
           opacity="0"
-          transform="translate(130, 100), rotate(40)"
+          transform="translate(-110, 140), rotate(40)"
+          transform-origin="bottom"
         >
           <animate
             attributeName="opacity"
@@ -1273,7 +1295,8 @@
             fill="freeze"
             repeatCount="1"
             type="rotate"
-            values="45 110 200; -11 110 200; 6 110 200; -5 110 200;5 110 200; 0 110 200"
+            calcMode="splines"
+            values="45 -270 -60; -11 -270 -60; 6 -270 -60; -5 -270 -60; 5 -270 -60; 0 -270 -60"
             keyTimes="0; 0.3; 0.48; 0.65; 0.82; 1"
             keySplines="0.84, 0.32, 0.49, 1.01; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58"
           />
@@ -1324,14 +1347,31 @@
           </g>
         </g>
 
-        <g id="baloon-line" opacity="0">
+        <g
+          id="baloon-line"
+          opacity="0"
+          transform-origin="bottom"
+          transform="translate(-90, 100), rotate(40)"
+        >
           <animate
             attributeName="opacity"
-            begin="ballonShowAnimation.end + 0.2s"
+            begin="ballonShowAnimation.end + 0.3s"
             dur="600ms"
             fill="freeze"
             from="0"
             to="1"
+          />
+          <animateTransform
+            attributeName="transform"
+            begin="ballonShowAnimation.end + 0.1s"
+            dur="2s"
+            fill="freeze"
+            repeatCount="1"
+            type="rotate"
+            calcMode="splines"
+            values="45 -270 -60; -11 -270 -60; 6 -270 -60; -5 -270 -60; 5 -270 -60; 0 -270 -60"
+            keyTimes="0; 0.3; 0.48; 0.65; 0.82; 1"
+            keySplines="0.84, 0.32, 0.49, 1.01; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58; 0.44, 0.59, 0.44, 0.58"
           />
           <line
             x1="107.65"
@@ -1373,7 +1413,7 @@
           <animateTransform
             additive="sum"
             attributeName="transform"
-            begin="flowersShowAnimation.end + 0.1s"
+            begin="flowersShowAnimation.end - 0.1s"
             dur="1s"
             fill="freeze"
             type="rotate"
@@ -1411,7 +1451,7 @@
           <animateTransform
             additive="sum"
             attributeName="transform"
-            begin="flowersShowAnimation.end + 0.15s"
+            begin="flowersShowAnimation.end - 0.15s"
             dur="1s"
             fill="freeze"
             type="rotate"
@@ -1464,7 +1504,7 @@
           <animateTransform
             additive="sum"
             attributeName="transform"
-            begin="flowersShowAnimation.end + 0.2s"
+            begin="flowersShowAnimation.end - 0.1s"
             dur="1s"
             fill="freeze"
             type="rotate"
@@ -1506,7 +1546,7 @@
         </g>
       </g>
 
-      <g id="suit-bottom">
+      <g id="suitcase-bottom">
         <path
           d="M280.29,318.62a5.72,5.72,0,1,0-5.12-5.69,5.43,5.43,0,0,0,5.12,5.69"
           fill="#a67ee5"
@@ -1639,7 +1679,7 @@
         />
       </g>
 
-      <g id="suit-layout">
+      <g id="suitcase-layout">
         <line
           x1="46.24"
           y1="329"
