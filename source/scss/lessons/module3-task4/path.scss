@@ -1,0 +1,49 @@
+// SVG path animation
+//--------------------------------------------
+
+$time-animate: 1s;
+$loss-animate-paths: 9;
+
+.animate-victory path {
+  @include root-result-screen() {
+    animation: {
+      duration: $time-animate;
+      name: show;
+      timing-function: ease;
+      fill-mode: forwards;
+    }
+  }
+}
+
+.animate-loss path {
+  transform: translateY(-100%);
+  transition-duration: 500ms;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.08, 0.59, 0.77, 1.23);
+
+  @include root-result-screen() {
+    animation: {
+      duration: 1s;
+      name: show;
+      timing-function: linear;
+      fill-mode: forwards;
+    }
+    transform: translateY(0);
+  }
+
+  @for $i from 1 through $loss-animate-paths {
+    $step: $time-animate / $loss-animate-paths;
+    $step-calc: $step * $i - $step;
+
+    &:nth-child(#{$i}) {
+      animation-delay: $step-calc;
+      transition-delay: $step-calc + 0.4s;
+    }
+  }
+}
+
+@keyframes show {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

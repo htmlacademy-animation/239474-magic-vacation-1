@@ -1,15 +1,16 @@
 // modules
-import mobileHeight from './modules/mobile-height-adjust.js';
-import slider from './modules/slider.js';
-import menu from './modules/menu.js';
-import footer from './modules/footer.js';
-import chat from './modules/chat.js';
-import result from './modules/result.js';
-import form from './modules/form.js';
-import social from './modules/social.js';
-import FullPageScroll from './modules/full-page-scroll';
-import onload from './modules/onload';
+import mobileHeight from "./modules/mobile-height-adjust.js";
+import slider from "./modules/slider.js";
+import menu from "./modules/menu.js";
+import footer from "./modules/footer.js";
+import chat from "./modules/chat.js";
+import result from "./modules/result.js";
+import form from "./modules/form.js";
+import social from "./modules/social.js";
+import FullPageScroll from "./modules/full-page-scroll";
+import onload from "./modules/onload";
 import WordAnimation from "./modules/word-animation";
+import pathAnimation from "./modules/svg";
 
 // init modules
 mobileHeight();
@@ -21,6 +22,9 @@ result();
 form();
 social();
 onload();
+
+pathAnimation(".animate-victory");
+pathAnimation(".animate-loss");
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
