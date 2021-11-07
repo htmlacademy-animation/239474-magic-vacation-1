@@ -11,6 +11,7 @@ import FullPageScroll from "./modules/full-page-scroll";
 import onload from "./modules/onload";
 import WordAnimation from "./modules/word-animation";
 import pathAnimation from "./modules/svg";
+import Timer from "./modules/timer";
 
 // init modules
 mobileHeight();
@@ -42,3 +43,8 @@ wordAnimation3.init();
 
 const wordAnimation4 = new WordAnimation(".prizes__title");
 wordAnimation4.init();
+
+// Timer animation
+
+const timer = new Timer(".game__counter", 5, 0);
+timer.init();
