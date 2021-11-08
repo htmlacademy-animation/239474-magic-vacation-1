@@ -10430,8 +10430,8 @@ class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
-    this.screenBg = document.querySelector('.animation-bg');
-    this.screenPrizes = document.querySelector('.screen--prizes');
+    this.screenBg = document.querySelector(`.animation-bg`);
+    this.screenPrizes = document.querySelector(`.screen--prizes`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
@@ -10439,7 +10439,7 @@ class FullPageScroll {
   }
 
   init() {
-    document.addEventListener(`wheel`, lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.onScrollHandler, this.THROTTLE_TIMEOUT, { trailing: true }));
+    document.addEventListener(`wheel`, lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -10486,10 +10486,10 @@ class FullPageScroll {
 
   changeBgVisibility() {
     const activeItem = this.screenElements[this.activeScreen];
-    const className = 'open';
-    const screenClassName = 'screen-prizes-animation';
+    const className = `open`;
+    const screenClassName = `screen-prizes-animation`;
 
-    if (activeItem.id === "prizes") {
+    if (activeItem.id === `prizes`) {
       this.screenBg.classList.add(className);
       this.screenPrizes.classList.add(screenClassName);
     } else {
@@ -10501,10 +10501,10 @@ class FullPageScroll {
   toggleBodyClass() {
     const activeItem = this.screenElements[this.activeScreen];
 
-    if (activeItem.id !== "story") {
-      document.body.classList.remove('slide6', 'slide0', 'slide2', 'slide4');
+    if (activeItem.id !== `story`) {
+      document.body.classList.remove(`slide6`, `slide0`, `slide2`, `slide4`);
     } else {
-      document.body.classList.add('slide0');
+      document.body.classList.add(`slide0`);
     }
   }
 
@@ -10604,11 +10604,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (() => {
-  window.addEventListener('load', (e) => {
-    document.body.classList.remove("no-animation");
-    document.body.classList.add("animation");
+  window.addEventListener(`load`, () => {
+    document.body.classList.remove(`no-animation`);
+    document.body.classList.add(`animation`);
   });
 });
+
 
 /***/ }),
 
@@ -10675,39 +10676,51 @@ __webpack_require__.r(__webpack_exports__);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
 
   const setSlider = function () {
-    if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
+    if (window.innerWidth / window.innerHeight < 1 || window.innerWidth < 769) {
       storySlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](`.js-slider`, {
         pagination: {
           el: `.swiper-pagination`,
-          type: `bullets`
+          type: `bullets`,
         },
         keyboard: {
-          enabled: true
+          enabled: true,
         },
         on: {
           init: () => {
-            document.body.classList.add('slide0');
-          }, 
+            document.body.classList.add(`slide0`);
+          },
           slideChange: () => {
-            document.body.classList.remove('slide' + (storySlider.previousIndex));
-            document.body.classList.add('slide' + (storySlider.activeIndex));
-            
-            if (storySlider.activeIndex === 0 || storySlider.activeIndex === 1) {
+            document.body.classList.remove(`slide` + storySlider.previousIndex);
+            document.body.classList.add(`slide` + storySlider.activeIndex);
+
+            if (
+              storySlider.activeIndex === 0 ||
+              storySlider.activeIndex === 1
+            ) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
-            } else if (storySlider.activeIndex === 2 || storySlider.activeIndex === 3) {
+            } else if (
+              storySlider.activeIndex === 2 ||
+              storySlider.activeIndex === 3
+            ) {
               sliderContainer.style.backgroundImage = `url("img/slide2.jpg"), linear-gradient(180deg, rgba(45, 54, 179, 0) 0%, #2A34B0 16.85%)`;
-            } else if (storySlider.activeIndex === 4 || storySlider.activeIndex === 5) {
+            } else if (
+              storySlider.activeIndex === 4 ||
+              storySlider.activeIndex === 5
+            ) {
               sliderContainer.style.backgroundImage = `url("img/slide3.jpg"), linear-gradient(180deg, rgba(92, 138, 198, 0) 0%, #5183C4 16.85%)`;
-            } else if (storySlider.activeIndex === 6 || storySlider.activeIndex === 7) {
+            } else if (
+              storySlider.activeIndex === 6 ||
+              storySlider.activeIndex === 7
+            ) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg"), linear-gradient(180deg, rgba(45, 39, 63, 0) 0%, #2F2A42 16.85%)`;
             }
           },
           resize: () => {
             storySlider.update();
-          }
+          },
         },
         observer: true,
-        observeParents: true
+        observeParents: true,
       });
     } else {
       storySlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](`.js-slider`, {
@@ -10715,22 +10728,22 @@ __webpack_require__.r(__webpack_exports__);
         slidesPerGroup: 2,
         pagination: {
           el: `.swiper-pagination`,
-          type: `fraction`
+          type: `fraction`,
         },
         navigation: {
           nextEl: `.js-control-next`,
           prevEl: `.js-control-prev`,
         },
         keyboard: {
-          enabled: true
+          enabled: true,
         },
         on: {
           init: () => {
-            document.body.classList.add('slide0');
-          }, 
+            document.body.classList.add(`slide0`);
+          },
           slideChange: () => {
-            document.body.classList.remove('slide' + (storySlider.previousIndex));
-            document.body.classList.add('slide' + (storySlider.activeIndex));
+            document.body.classList.remove(`slide` + storySlider.previousIndex);
+            document.body.classList.add(`slide` + storySlider.activeIndex);
 
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
@@ -10744,10 +10757,10 @@ __webpack_require__.r(__webpack_exports__);
           },
           resize: () => {
             storySlider.update();
-          }
+          },
         },
         observer: true,
-        observeParents: true
+        observeParents: true,
       });
     }
   };
@@ -10835,8 +10848,8 @@ class Timer {
   constructor(node, minutes, seconds) {
     this._node = node;
     this._element = document.querySelector(this._node);
-    this.animation;
-    this.start;
+    this.animation = null;
+    this.start = 0;
 
     this.minutes = minutes;
     this.seconds = seconds;
@@ -10845,7 +10858,7 @@ class Timer {
     this.end = this.minutes * this.secInMin * this.msInSec;
 
     this.initialValues = `${this.renderTime(this.minutes)}:${this.renderTime(
-      this.seconds
+        this.seconds,
     )}`;
     this._element.innerHTML = this.initialValues;
   }
@@ -10874,7 +10887,7 @@ class Timer {
     const minutes = Math.floor(secInStep / this.secInMin);
     const seconds = Math.floor(secInStep - minutes * this.secInMin);
 
-    return { minutes, seconds };
+    return {minutes, seconds};
   }
 
   tick() {
@@ -10887,11 +10900,17 @@ class Timer {
     }
 
     const reverseStep = this.end - step;
-    const { minutes, seconds } = this.calcTime(reverseStep);
+    const {minutes, seconds} = this.calcTime(reverseStep);
     const renderMinutes = this.renderTime(minutes);
     const renderSeconds = this.renderTime(seconds);
 
     const time = `${renderMinutes}:${renderSeconds}`;
+    const innerContent = this._element.innerHTML;
+
+    if (innerContent === time) {
+      return;
+    }
+
     this._element.innerHTML = time;
   }
 }
@@ -10913,7 +10932,7 @@ class WordAnimation {
   constructor(node) {
     this._node = node;
     this._element = document.querySelector(this._node);
-    this.line = '';
+    this.line = ``;
     this.time = 1000;
   }
 
@@ -10923,10 +10942,10 @@ class WordAnimation {
 
   createClone() {
     const clone = this._element.cloneNode(true);
-    clone.style.width = clone.offsetWidth + 'px';
-    clone.style.position = 'absolute';
-    clone.style.left = '-100%';
-    clone.innerHTML = 'Clone';
+    clone.style.width = clone.offsetWidth + `px`;
+    clone.style.position = `absolute`;
+    clone.style.left = `-100%`;
+    clone.innerHTML = `Clone`;
     document.body.appendChild(clone);
 
     return clone;
@@ -10943,11 +10962,9 @@ class WordAnimation {
     let cloneHeight = clone.offsetHeight;
 
     const content = this._element.innerHTML;
-    clone.innerHTML = '';
-
+    clone.innerHTML = ``;
     let nextLineDelay = 0;
-
-    this.line += '<span>';
+    this.line += `<span>`;
     for (let i = 0; i < content.length; i++) {
       const elem = content[i];
       clone.innerHTML += elem;
@@ -10955,10 +10972,10 @@ class WordAnimation {
       if (clone.offsetHeight > cloneHeight) {
         nextLineDelay += this.time / 2;
         cloneHeight = clone.offsetHeight;
-        this.line += '</span><span>';
+        this.line += `</span><span>`;
       }
 
-      if (elem === " ") {
+      if (elem === ` `) {
         this.line += `<span class="text-space">${elem}</span>`;
       } else {
         const randomDelay = this.random(0, 250) + nextLineDelay;
@@ -10967,19 +10984,18 @@ class WordAnimation {
         if (randomDelay >= 500) {
           delay = randomDelay - 250;
         }
-        
+
         const duration = this.time / 2 - delay + nextLineDelay;
         this.line += `<span style="transition-delay: ${delay}ms; transition-duration: ${duration}ms;">${elem}</span>`;
       }
     }
-    this.line += '</span>';
-
+    this.line += `</span>`;
     this._element.innerHTML = this.line;
-    this._element.classList.add("word-animation");
+    this._element.classList.add(`word-animation`);
     clone.remove();
   }
 }
-  
+
 
 /***/ }),
 
@@ -11031,29 +11047,29 @@ Object(_modules_form_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 Object(_modules_social_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
 Object(_modules_onload__WEBPACK_IMPORTED_MODULE_9__["default"])();
 
-Object(_modules_svg__WEBPACK_IMPORTED_MODULE_11__["default"])(".animate-victory");
-Object(_modules_svg__WEBPACK_IMPORTED_MODULE_11__["default"])(".animate-loss");
+Object(_modules_svg__WEBPACK_IMPORTED_MODULE_11__["default"])(`.animate-victory`);
+Object(_modules_svg__WEBPACK_IMPORTED_MODULE_11__["default"])(`.animate-loss`);
 
 const fullPageScroll = new _modules_full_page_scroll__WEBPACK_IMPORTED_MODULE_8__["default"]();
 fullPageScroll.init();
 
-const wordAnimation = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](".intro__title");
+const wordAnimation = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](`.intro__title`);
 wordAnimation.init();
 
-const wordAnimation2 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](".intro__date");
+const wordAnimation2 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](`.intro__date`);
 setTimeout(() => {
   wordAnimation2.init();
 }, 1000);
 
-const wordAnimation3 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](".slider__item-title");
+const wordAnimation3 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](`.slider__item-title`);
 wordAnimation3.init();
 
-const wordAnimation4 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](".prizes__title");
+const wordAnimation4 = new _modules_word_animation__WEBPACK_IMPORTED_MODULE_10__["default"](`.prizes__title`);
 wordAnimation4.init();
 
 // Timer animation
 
-const timer = new _modules_timer__WEBPACK_IMPORTED_MODULE_12__["default"](".game__counter", 5, 0);
+const timer = new _modules_timer__WEBPACK_IMPORTED_MODULE_12__["default"](`.game__counter`, 5, 0);
 timer.init();
 
 
