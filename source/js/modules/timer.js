@@ -2,8 +2,8 @@ export default class Timer {
   constructor(node, minutes, seconds) {
     this._node = node;
     this._element = document.querySelector(this._node);
-    this.animation;
-    this.start;
+    this.animation = null;
+    this.start = 0;
 
     this.minutes = minutes;
     this.seconds = seconds;
@@ -12,7 +12,7 @@ export default class Timer {
     this.end = this.minutes * this.secInMin * this.msInSec;
 
     this.initialValues = `${this.renderTime(this.minutes)}:${this.renderTime(
-      this.seconds
+        this.seconds,
     )}`;
     this._element.innerHTML = this.initialValues;
   }
@@ -41,7 +41,7 @@ export default class Timer {
     const minutes = Math.floor(secInStep / this.secInMin);
     const seconds = Math.floor(secInStep - minutes * this.secInMin);
 
-    return { minutes, seconds };
+    return {minutes, seconds};
   }
 
   tick() {
@@ -54,11 +54,17 @@ export default class Timer {
     }
 
     const reverseStep = this.end - step;
-    const { minutes, seconds } = this.calcTime(reverseStep);
+    const {minutes, seconds} = this.calcTime(reverseStep);
     const renderMinutes = this.renderTime(minutes);
     const renderSeconds = this.renderTime(seconds);
 
     const time = `${renderMinutes}:${renderSeconds}`;
+    const innerContent = this._element.innerHTML;
+
+    if (innerContent === time) {
+      return;
+    }
+
     this._element.innerHTML = time;
   }
 }

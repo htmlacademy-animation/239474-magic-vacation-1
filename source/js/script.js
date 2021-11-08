@@ -24,27 +24,27 @@ form();
 social();
 onload();
 
-pathAnimation(".animate-victory");
-pathAnimation(".animate-loss");
+pathAnimation(`.animate-victory`);
+pathAnimation(`.animate-loss`);
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
 
-const wordAnimation = new WordAnimation(".intro__title");
+const wordAnimation = new WordAnimation(`.intro__title`);
 wordAnimation.init();
 
-const wordAnimation2 = new WordAnimation(".intro__date");
+const wordAnimation2 = new WordAnimation(`.intro__date`);
 setTimeout(() => {
   wordAnimation2.init();
 }, 1000);
 
-const wordAnimation3 = new WordAnimation(".slider__item-title");
+const wordAnimation3 = new WordAnimation(`.slider__item-title`);
 wordAnimation3.init();
 
-const wordAnimation4 = new WordAnimation(".prizes__title");
+const wordAnimation4 = new WordAnimation(`.prizes__title`);
 wordAnimation4.init();
 
 // Timer animation
 
-const timer = new Timer(".game__counter", 5, 0);
+const timer = new Timer(`.game__counter`, 5, 0);
 timer.init();
