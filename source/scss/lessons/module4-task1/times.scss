@@ -1,0 +1,10 @@
+// Times styles
+//--------------------------------------
+
+.game__counter {
+  width: 114px;
+
+  @media (max-width: 1024px) {
+    width: 95px;
+  }
+}
