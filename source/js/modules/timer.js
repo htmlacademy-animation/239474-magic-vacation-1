@@ -12,7 +12,7 @@ export default class Timer {
     this.end = this.minutes * this.secInMin * this.msInSec;
 
     this.initialValues = `${this.renderTime(this.minutes)}:${this.renderTime(
-      this.seconds,
+        this.seconds,
     )}`;
     this._element.innerHTML = this.initialValues;
 
@@ -43,7 +43,7 @@ export default class Timer {
     const minutes = Math.floor(currentFrame / this.secInMin);
     const seconds = Math.floor(currentFrame - minutes * this.secInMin);
 
-    return { currentFrame, minutes, seconds };
+    return {currentFrame, minutes, seconds};
   }
 
   tick() {
@@ -57,7 +57,7 @@ export default class Timer {
     }
 
     const reverseTickTime = this.end - currentTickTime;
-    const { currentFrame, minutes, seconds } = this.calcTime(reverseTickTime);
+    const {currentFrame, minutes, seconds} = this.calcTime(reverseTickTime);
 
     if (currentFrame === this.renderedSeconds) {
       return;

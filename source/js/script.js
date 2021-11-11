@@ -52,8 +52,8 @@ timer.init();
 
 // Prizes animation
 
-const prize = new Prize('.prizes__number-cases', 0, 7, 1000, 7600);
+const prize = new Prize(`.prizes__number-cases`, 0, 7, 1000, 7600);
 prize.init();
 
-const codes = new Prize('.prizes__number-codes', 11, 900, 1000, 10000);
+const codes = new Prize(`.prizes__number-codes`, 11, 900, 1000, 10000);
 codes.init();

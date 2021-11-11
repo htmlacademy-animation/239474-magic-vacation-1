@@ -50,7 +50,7 @@ export default class Timer {
 
     // distribute 7 numbers evenly by 12 frames
     const renderNumber = Math.floor(
-      (currentFrame / this.framesPerSec) * this.end,
+        (currentFrame / this.framesPerSec) * this.end,
     );
 
     this._element.innerHTML = renderNumber;
