@@ -15,11 +15,13 @@ export default class Timer {
         this.seconds,
     )}`;
     this._element.innerHTML = this.initialValues;
+
+    this.renderedSeconds = null;
   }
 
   init() {
     setTimeout(() => {
-      this.start = new Date().getTime();
+      this.start = performance.now();
       this.animate();
     }, 1000);
   }
@@ -37,34 +39,35 @@ export default class Timer {
   }
 
   calcTime(step) {
-    const secInStep = step / this.msInSec;
-    const minutes = Math.floor(secInStep / this.secInMin);
-    const seconds = Math.floor(secInStep - minutes * this.secInMin);
+    const currentFrame = Math.floor(step / this.msInSec);
+    const minutes = Math.floor(currentFrame / this.secInMin);
+    const seconds = Math.floor(currentFrame - minutes * this.secInMin);
 
-    return {minutes, seconds};
+    return {currentFrame, minutes, seconds};
   }
 
   tick() {
     this.animation = this.animate();
-    const current = new Date().getTime();
-    const step = current - this.start;
+    const current = performance.now();
+    const currentTickTime = current - this.start;
 
-    if (step > this.end) {
+    if (currentTickTime > this.end) {
       this.clear();
+      return;
     }
 
-    const reverseStep = this.end - step;
-    const {minutes, seconds} = this.calcTime(reverseStep);
+    const reverseTickTime = this.end - currentTickTime;
+    const {currentFrame, minutes, seconds} = this.calcTime(reverseTickTime);
+
+    if (currentFrame === this.renderedSeconds) {
+      return;
+    }
+
+    this.renderedSeconds = currentFrame;
     const renderMinutes = this.renderTime(minutes);
     const renderSeconds = this.renderTime(seconds);
 
     const time = `${renderMinutes}:${renderSeconds}`;
-    const innerContent = this._element.innerHTML;
-
-    if (innerContent === time) {
-      return;
-    }
-
     this._element.innerHTML = time;
   }
 }

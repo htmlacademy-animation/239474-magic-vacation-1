@@ -1,17 +1,18 @@
 // modules
-import mobileHeight from "./modules/mobile-height-adjust.js";
-import slider from "./modules/slider.js";
-import menu from "./modules/menu.js";
-import footer from "./modules/footer.js";
-import chat from "./modules/chat.js";
-import result from "./modules/result.js";
-import form from "./modules/form.js";
-import social from "./modules/social.js";
-import FullPageScroll from "./modules/full-page-scroll";
-import onload from "./modules/onload";
-import WordAnimation from "./modules/word-animation";
-import pathAnimation from "./modules/svg";
-import Timer from "./modules/timer";
+import mobileHeight from './modules/mobile-height-adjust.js';
+import slider from './modules/slider.js';
+import menu from './modules/menu.js';
+import footer from './modules/footer.js';
+import chat from './modules/chat.js';
+import result from './modules/result.js';
+import form from './modules/form.js';
+import social from './modules/social.js';
+import FullPageScroll from './modules/full-page-scroll';
+import onload from './modules/onload';
+import WordAnimation from './modules/word-animation';
+import pathAnimation from './modules/svg';
+import Timer from './modules/timer';
+import Prize from './modules/prizes';
 
 // init modules
 mobileHeight();
@@ -48,3 +49,11 @@ wordAnimation4.init();
 
 const timer = new Timer(`.game__counter`, 5, 0);
 timer.init();
+
+// Prizes animation
+
+const prize = new Prize(`.prizes__number-cases`, 0, 7, 1000, 7600);
+prize.init();
+
+const codes = new Prize(`.prizes__number-codes`, 11, 900, 1000, 10000);
+codes.init();

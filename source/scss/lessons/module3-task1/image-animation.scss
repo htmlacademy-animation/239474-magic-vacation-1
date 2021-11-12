@@ -1,7 +1,20 @@
+$prize-item-width: 33.333%;
+
 .prizes {
+  $this: &;
+
+  &__image,
+  &__list {
+    position: relative;
+
+    @media (min-width: 992px) {
+      margin: 0 auto;
+      width: 840px;
+    }
+  }
+
   &__image {
     height: 330px;
-    position: relative;
 
     img {
       height: 100%;
@@ -10,6 +23,137 @@
   }
 
   &__list {
-    display: none;
+    justify-content: center;
+    min-height: 130px;
+
+    #{$this}__icon {
+      display: none;
+    }
+  }
+
+  // List items
+
+  &__item {
+    margin-left: 0;
+    position: absolute;
+    top: 0;
+    width: $prize-item-width;
+
+    #{$this}__text {
+      opacity: 0;
+
+      @include root-active-screen {
+        animation: {
+          name: moveText;
+          duration: 500ms;
+          timing-function: ease-out;
+          fill-mode: forwards;
+          delay: 3.4s;
+        }
+      }
+    }
+
+    // Left item
+
+    &--journeys {
+      left: 0;
+      opacity: 0;
+      transform: translateX(115%);
+      transition: {
+        property: opacity;
+        duration: 500ms;
+        delay: 3.2s;
+      }
+
+      @include root-active-screen {
+        animation: {
+          name: moveJourneys;
+          duration: 700ms;
+          fill-mode: forwards;
+          delay: 5.82s;
+        }
+        opacity: 1;
+      }
+    }
+
+    // Middle item
+
+    &--cases {
+      left: calc(#{$prize-item-width} + 40px);
+      opacity: 0;
+      transition: {
+        property: opacity;
+        duration: 300ms;
+        delay: 7.7s;
+      }
+
+      @include root-active-screen {
+        opacity: 1;
+
+        #{$this}__text {
+          animation-delay: 7.9s;
+        }
+      }
+    }
+
+    // Right item
+
+    &--codes {
+      opacity: 0;
+      left: $prize-item-width * 2;
+      transition: {
+        property: opacity;
+        duration: 300ms;
+        delay: 10.2s;
+      }
+
+      #{$this}__text {
+        margin-left: 55px;
+      }
+
+      @include root-active-screen {
+        opacity: 1;
+
+        #{$this}__text {
+          animation-delay: 10.4s;
+        }
+      }
+    }
+  }
+
+  &__number {
+    &-codes {
+      @media (min-width: 1024px) {
+        width: 15rem;
+      }
+    }
+
+    &-cases {
+      @media (min-width: 1024px) {
+        width: 5.5rem;
+      }
+    }
+  }
+}
+
+@keyframes moveJourneys {
+  from {
+    transform: translateX(110%);
+  }
+
+  to {
+    transform: translateX(15%);
+  }
+}
+
+@keyframes moveText {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
