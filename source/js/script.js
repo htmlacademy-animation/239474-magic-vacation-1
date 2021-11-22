@@ -13,6 +13,7 @@ import WordAnimation from './modules/word-animation';
 import pathAnimation from './modules/svg';
 import Timer from './modules/timer';
 import Prize from './modules/prizes';
+import IceWhaleAnimation from './modules/canvas';
 
 // init modules
 mobileHeight();
@@ -57,3 +58,9 @@ prize.init();
 
 const codes = new Prize(`.prizes__number-codes`, 11, 900, 1000, 10000);
 codes.init();
+
+const animationButton = document.querySelector('.js-whale-animation');
+const iceWhale = new IceWhaleAnimation();
+animationButton.addEventListener(`click`, () => {
+  iceWhale.init();
+});
